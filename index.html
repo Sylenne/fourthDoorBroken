@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>gate</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1">
+    <meta itemprop="name" content="gate">
+    <meta itemprop="description" content="made with cables">
+    <meta itemprop="image" content="screenshot.png">
+    <meta name="description" content="made with cables" />
+
+    <style>
+        body {
+            margin: 0;
+            background-color: #000;
+            color: #fff;
+            font-family: Helvetica, Arial, sans-serif;
+        }
+        canvas {
+            display: block;
+            position: absolute;
+        }
+        footer {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            box-sizing: border-box;
+            width: 100vw;
+            padding: 20px;
+            text-align: right;
+            font-size: 18px;
+            color: #24baa7;
+        }
+        footer a, footer a:hover, footer a:active {
+            color: #24baa7;
+        }
+        div{
+            display: none;
+        }
+    </style>
+
+</head>
+<body style="overflow: hidden;">
+    <a href="https://sylenne.github.io/Seoul/" style="position: absolute; z-index: 2; width: 283%;">
+        <img src="carre.png" style="position: absolute; z-index: 2; width: 23%; opacity: 0;">
+        </a>
+     <a href="http://127.0.0.1/Sahan/" style="position: absolute; z-index: 1; width: 283%; margin-left: 69%; opacity: 0;">
+            <img src="carre.png" style="position: absolute; z-index: 1; width: 23%; opacity: 1;">
+     </a>
+    
+    <div id ="no" style="position: absolute;z-index: 1; width: 100%;">
+    <img id="myDropdown" src="img.gif" style="width: 116%; position:absolute; margin-left: -6%; margin-top:-10%; display: inline-block;" alt="" class="post-thumb" onclick='this.src=this.src'/>
+    </div>
+    <canvas id="glcanvas" width="100vw" height="100vh" style="z-index: -1s;"></canvas>
+    <footer>
+        made with <a href='https://cables.gl'>cables</a>
+        <!-- we would greatly appreciate if you link cables somewhere on your site! and tell us your website! thanks <3 :) -->
+    </footer>
+
+    <libs/>
+    <script type="text/javascript" src="js/patch.js" async></script>
+    <corelibs/>
+
+    <script>
+        /**
+         * Called when there was a cables error.
+         * @param {string} errId - ID of the error, e.g. 'NO_WEBGL' or 'NO_WEBAUDIO'
+         *                         when the browser does not support the used APIs
+         * @param {string} errMsg - The error message
+         */
+        function showError(errId, errMsg) {
+            alert('An error occured: ' + errId + ', ' + errMsg);
+        }
+
+        function patchInitialized() {
+            // You can now access the patch object (CABLES.patch), register variable watchers and so on
+        }
+
+        function patchFinishedLoading() {
+            // The patch is ready now, all assets have been loaded
+        }
+
+        document.addEventListener('CABLES.jsLoaded', function(event) {
+            CABLES.patch = new CABLES.Patch({
+                patch: CABLES.exportedPatch,
+                prefixAssetPath: '',
+                glCanvasId: 'glcanvas',
+                glCanvasResizeToWindow: true,
+                onError: showError,
+                onPatchLoaded: patchInitialized,
+                onFinishedLoading: patchFinishedLoading,
+            });
+        });
+    </script>
+  
+        <script>
+            window.onclick = myFunction;
+            
+            function myFunction() {
+              document.getElementsByTagName("DIV")[0].style.display = "inline-block";
+            }
+            </script>
+            <script>
+                window.onload = function(){
+                
+                var links = document.getElementsByTagName('a');
+                for( var i=0,il = links.length; i< il; i ++ ){
+                 links[i].onclick = clickHandler;
+                }
+                
+                function clickHandler(event) {
+                
+                event.preventDefault();
+                
+                setTimeout(function() {
+                
+                  location.href = this.href;
+                }, 3000);
+                
+                
+                };
+                };
+                </script>
+</body>
+</html>
